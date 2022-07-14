@@ -1,0 +1,9 @@
+if ($query_string ~ "^view") {
+    rewrite ^/([a-zA-Z0-9]+(-[a-zA-Z0-9]+)*)$ /view.php?note=$1 last;
+}
+if ($query_string ~ "^simple") {
+    rewrite ^/([a-zA-Z0-9]+(-[a-zA-Z0-9]+)*)$ /simple.php?note=$1 last;
+    }
+rewrite ^/_notes/(.*)$ /note.php last;
+rewrite ^/([a-zA-Z0-9]+(-[a-zA-Z0-9]+)*)$ /index.php?note=$1 last;
+add_header  X-Robots-Tag "noindex, nofollow, nosnippet, noarchive";
